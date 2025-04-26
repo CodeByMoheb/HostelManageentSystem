@@ -1,4 +1,4 @@
-# Hostel Management System
+# Hostel Management System by TeamAlpha
 
 ## Overview
 The Hostel Management System is a web-based application that simplifies the management of hostel operations such as student check-ins, room allocation, and booking status. It provides hostel administrators with an efficient way to handle room bookings and monitor occupancy in real time.

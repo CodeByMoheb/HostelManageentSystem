@@ -10,16 +10,16 @@ A modern, web-based Hostel Management System built with ASP.NET Core, featuring 
 
 ![Student Dashboard](screenshots/student-dashboard.png)
 
-### Manager Dashboard
+### Register
 ![Manager Dashboard](screenshots/manager-dashboard.png)
 
 ### Key Features
 | Feature | Screenshot |
 |---------|------------|
 | Login System | ![Login Page](screenshots/login-page.png) |
-| Room Management | ![Room Management](screenshots/room-management.png) |
-| Payment System | ![Payment System](screenshots/payment-system.png) |
-| Maintenance Requests | ![Maintenance Requests](screenshots/maintenance-request.png) |
+| Student Dashboard | ![Room Management](screenshots/room-management.png) |
+| Manager Dashboard | ![Payment System](screenshots/payment-system.png) |
+| Admin Dashboard | ![Maintenance Requests](screenshots/maintenance-request.png) |
 
 ## ✨ Features
 

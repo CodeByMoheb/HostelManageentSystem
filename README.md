@@ -4,10 +4,10 @@ A modern, web-based Hostel Management System built with ASP.NET Core, featuring 
 
 ## 📸 Screenshots
 
-### Admin Dashboard
+### HomePage
 ![Admin Dashboard](screenshots/admin-dashboard.png)
 
-### Student Dashboard
+
 ![Student Dashboard](screenshots/student-dashboard.png)
 
 ### Manager Dashboard

@@ -144,8 +144,8 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ## 📞 Contact
 
 For any queries or support, please contact:
-- Email: your.email@example.com
-- Website: [Your Website](https://yourwebsite.com)
+- Email: mohebullah.cse@gmail.com
+- Website: [Your Website](www.facebook.com/zidan.cse)
 
 ## 🙏 Acknowledgments
 
@@ -155,4 +155,4 @@ For any queries or support, please contact:
 - ASP.NET Core team for the robust framework
 
 ---
-Made with ❤️ in Bangladesh 🇧🇩
+Made by Mohebullah & team

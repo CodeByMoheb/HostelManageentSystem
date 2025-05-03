@@ -1,0 +1,99 @@
+@model IEnumerable<HostelManageentSystem.Models.Room>
+@{
+    ViewData["Title"] = "Room Management";
+    var hostelId = ViewBag.HostelId;
+    var hostelName = ViewBag.HostelName;
+}
+
+<div class="container-fluid">
+    <div class="row">
+        <!-- Sidebar -->
+        <div class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
+            <div class="position-sticky pt-3">
+                <ul class="nav flex-column">
+                    <li class="nav-item">
+                        <a class="nav-link" href="@Url.Action("Dashboard", "Manager")">
+                            <i class="fas fa-tachometer-alt"></i> Dashboard
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="@Url.Action("Hostels", "Manager")">
+                            <i class="fas fa-building"></i> My Hostels
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="@Url.Action("Bookings", "Manager")">
+                            <i class="fas fa-calendar-check"></i> Bookings
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="@Url.Action("Meals", "Manager")">
+                            <i class="fas fa-utensils"></i> Meal Management
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Main content -->
+        <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+            <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                <h1 class="h2">Room Management - @hostelName</h1>
+                <div class="btn-toolbar mb-2 mb-md-0">
+                    <a href="@Url.Action("CreateRoom", "Manager", new { hostelId = hostelId })" class="btn btn-primary">
+                        <i class="fas fa-plus"></i> Add New Room
+                    </a>
+                </div>
+            </div>
+
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Room Number</th>
+                            <th>Room Type</th>
+                            <th>Total Seats</th>
+                            <th>Available Seats</th>
+                            <th>Rent Per Seat</th>
+                            <th>Security Deposit</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var room in Model)
+                        {
+                            <tr>
+                                <td>@room.RoomNumber</td>
+                                <td>@room.RoomType</td>
+                                <td>@room.TotalSeats</td>
+                                <td>@room.AvailableSeats</td>
+                                <td>@room.RentPerSeat.ToString("C")</td>
+                                <td>@room.SecurityDeposit.ToString("C")</td>
+                                <td>
+                                    <span class="badge @(room.IsActive ? "bg-success" : "bg-danger")">
+                                        @(room.IsActive ? "Active" : "Inactive")
+                                    </span>
+                                </td>
+                                <td>
+                                    <div class="btn-group" role="group">
+                                        <a href="@Url.Action("EditRoom", "Manager", new { id = room.Id })" 
+                                           class="btn btn-sm btn-outline-primary">
+                                            <i class="fas fa-edit"></i> Edit
+                                        </a>
+                                    </div>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </main>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        // Add any necessary JavaScript here
+    </script>
+} 

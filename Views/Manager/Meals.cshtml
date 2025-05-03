@@ -1,0 +1,95 @@
+@model IEnumerable<HostelManageentSystem.Models.Meal>
+@{
+    ViewData["Title"] = "Meal Management";
+    var hostelId = ViewBag.HostelId;
+    var hostelName = ViewBag.HostelName;
+}
+
+<div class="container-fluid">
+    <div class="row">
+        <!-- Sidebar -->
+        <div class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
+            <div class="position-sticky pt-3">
+                <ul class="nav flex-column">
+                    <li class="nav-item">
+                        <a class="nav-link" href="@Url.Action("Dashboard", "Manager")">
+                            <i class="fas fa-tachometer-alt"></i> Dashboard
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="@Url.Action("Hostels", "Manager")">
+                            <i class="fas fa-building"></i> My Hostels
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="@Url.Action("Bookings", "Manager")">
+                            <i class="fas fa-calendar-check"></i> Bookings
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="@Url.Action("Meals", "Manager")">
+                            <i class="fas fa-utensils"></i> Meal Management
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Main content -->
+        <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+            <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                <h1 class="h2">Meal Management - @hostelName</h1>
+                <div class="btn-toolbar mb-2 mb-md-0">
+                    <a href="@Url.Action("CreateMeal", "Manager", new { hostelId = hostelId })" class="btn btn-primary">
+                        <i class="fas fa-plus"></i> Add New Meal
+                    </a>
+                </div>
+            </div>
+
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Meal Type</th>
+                            <th>Menu</th>
+                            <th>Price</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var meal in Model)
+                        {
+                            <tr>
+                                <td>@meal.MealDate.ToString("dd/MM/yyyy")</td>
+                                <td>@meal.MealType</td>
+                                <td>@meal.Menu</td>
+                                <td>@meal.Price.ToString("C")</td>
+                                <td>
+                                    <span class="badge @(meal.IsAvailable ? "bg-success" : "bg-danger")">
+                                        @(meal.IsAvailable ? "Available" : "Not Available")
+                                    </span>
+                                </td>
+                                <td>
+                                    <div class="btn-group" role="group">
+                                        <a href="@Url.Action("EditMeal", "Manager", new { id = meal.Id })" 
+                                           class="btn btn-sm btn-outline-primary">
+                                            <i class="fas fa-edit"></i> Edit
+                                        </a>
+                                    </div>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </main>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        // Add any necessary JavaScript here
+    </script>
+} 

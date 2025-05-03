@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "E:\\Software Engineering project\\HostelManageentSystem\\HostelManageentSystem.csproj": {}
+    "e:\\Software Engineering project\\HostelManageentSystem\\HostelManageentSystem.csproj": {}
   },
   "projects": {
-    "E:\\Software Engineering project\\HostelManageentSystem\\HostelManageentSystem.csproj": {
+    "e:\\Software Engineering project\\HostelManageentSystem\\HostelManageentSystem.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\Software Engineering project\\HostelManageentSystem\\HostelManageentSystem.csproj",
+        "projectUniqueName": "e:\\Software Engineering project\\HostelManageentSystem\\HostelManageentSystem.csproj",
         "projectName": "HostelManageentSystem",
-        "projectPath": "E:\\Software Engineering project\\HostelManageentSystem\\HostelManageentSystem.csproj",
+        "projectPath": "e:\\Software Engineering project\\HostelManageentSystem\\HostelManageentSystem.csproj",
         "packagesPath": "C:\\Users\\zmd99\\.nuget\\packages\\",
-        "outputPath": "E:\\Software Engineering project\\HostelManageentSystem\\obj\\",
+        "outputPath": "e:\\Software Engineering project\\HostelManageentSystem\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\zmd99\\AppData\\Roaming\\NuGet\\NuGet.Config",

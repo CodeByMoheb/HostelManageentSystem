@@ -1,0 +1,67 @@
+@model IEnumerable<HostelManageentSystem.Models.Payment>
+@{
+    ViewData["Title"] = "Manage Payments";
+}
+
+<div class="container">
+    <h1>Manage Payments</h1>
+
+    @if (TempData["SuccessMessage"] != null)
+    {
+        <div class="alert alert-success">
+            @TempData["SuccessMessage"]
+        </div>
+    }
+
+    <div class="card">
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Student</th>
+                            <th>Amount</th>
+                            <th>Type</th>
+                            <th>Status</th>
+                            <th>Transaction ID</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var payment in Model)
+                        {
+                            <tr>
+                                <td>@payment.PaymentDate.ToShortDateString()</td>
+                                <td>@payment.User?.UserName</td>
+                                <td>@payment.Amount.ToString("C")</td>
+                                <td>@payment.PaymentType</td>
+                                <td>
+                                    <span class="badge bg-@(payment.Status == "Completed" ? "success" : "warning")">
+                                        @payment.Status
+                                    </span>
+                                </td>
+                                <td>@payment.TransactionId</td>
+                                <td>
+                                    @if (payment.Status == "Pending")
+                                    {
+                                        <form asp-action="UpdatePaymentStatus" method="post" class="d-inline">
+                                            <input type="hidden" name="id" value="@payment.Id" />
+                                            <input type="hidden" name="status" value="Completed" />
+                                            <button type="submit" class="btn btn-success btn-sm">Approve</button>
+                                        </form>
+                                        <form asp-action="UpdatePaymentStatus" method="post" class="d-inline">
+                                            <input type="hidden" name="id" value="@payment.Id" />
+                                            <input type="hidden" name="status" value="Failed" />
+                                            <button type="submit" class="btn btn-danger btn-sm">Reject</button>
+                                        </form>
+                                    }
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div> 

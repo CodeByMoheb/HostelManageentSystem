@@ -1,0 +1,121 @@
+@model HostelManageentSystem.Models.Room
+@{
+    ViewData["Title"] = "Add New Room";
+    var hostelId = ViewBag.HostelId;
+    var hostelName = ViewBag.HostelName;
+}
+
+<div class="container-fluid">
+    <div class="row">
+        <!-- Sidebar -->
+        <div class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
+            <div class="position-sticky pt-3">
+                <ul class="nav flex-column">
+                    <li class="nav-item">
+                        <a class="nav-link" href="@Url.Action("Dashboard", "Manager")">
+                            <i class="fas fa-tachometer-alt"></i> Dashboard
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="@Url.Action("Hostels", "Manager")">
+                            <i class="fas fa-building"></i> My Hostels
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="@Url.Action("Bookings", "Manager")">
+                            <i class="fas fa-calendar-check"></i> Bookings
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="@Url.Action("Meals", "Manager")">
+                            <i class="fas fa-utensils"></i> Meal Management
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Main content -->
+        <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+            <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                <h1 class="h2">Add New Room - @hostelName</h1>
+            </div>
+
+            <div class="row">
+                <div class="col-md-8">
+                    <form asp-action="CreateRoom">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <input type="hidden" asp-for="HostelId" value="@hostelId" />
+                        
+                        <div class="mb-3">
+                            <label asp-for="RoomNumber" class="form-label"></label>
+                            <input asp-for="RoomNumber" class="form-control" />
+                            <span asp-validation-for="RoomNumber" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="RoomType" class="form-label"></label>
+                            <select asp-for="RoomType" class="form-select">
+                                <option value="Single">Single</option>
+                                <option value="Double">Double</option>
+                                <option value="Triple">Triple</option>
+                                <option value="Quad">Quad</option>
+                            </select>
+                            <span asp-validation-for="RoomType" class="text-danger"></span>
+                        </div>
+
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <label asp-for="TotalSeats" class="form-label"></label>
+                                <input asp-for="TotalSeats" class="form-control" />
+                                <span asp-validation-for="TotalSeats" class="text-danger"></span>
+                            </div>
+                            <div class="col-md-6">
+                                <label asp-for="AvailableSeats" class="form-label"></label>
+                                <input asp-for="AvailableSeats" class="form-control" />
+                                <span asp-validation-for="AvailableSeats" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <label asp-for="RentPerSeat" class="form-label"></label>
+                                <input asp-for="RentPerSeat" class="form-control" />
+                                <span asp-validation-for="RentPerSeat" class="text-danger"></span>
+                            </div>
+                            <div class="col-md-6">
+                                <label asp-for="SecurityDeposit" class="form-label"></label>
+                                <input asp-for="SecurityDeposit" class="form-control" />
+                                <span asp-validation-for="SecurityDeposit" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="Description" class="form-label"></label>
+                            <textarea asp-for="Description" class="form-control" rows="3"></textarea>
+                            <span asp-validation-for="Description" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-3 form-check">
+                            <input asp-for="IsActive" class="form-check-input" />
+                            <label asp-for="IsActive" class="form-check-label"></label>
+                        </div>
+
+                        <div class="mb-3">
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fas fa-save"></i> Create Room
+                            </button>
+                            <a href="@Url.Action("Rooms", "Manager", new { hostelId = hostelId })" class="btn btn-secondary">
+                                <i class="fas fa-times"></i> Cancel
+                            </a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+} 

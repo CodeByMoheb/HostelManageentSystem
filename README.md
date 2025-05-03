@@ -4,22 +4,22 @@ A modern, web-based Hostel Management System built with ASP.NET Core, featuring 
 
 ## 📸 Screenshots
 
-### Admin Dashboard
+### HomePage
 ![Admin Dashboard](screenshots/admin-dashboard.png)
 
-### Student Dashboard
+
 ![Student Dashboard](screenshots/student-dashboard.png)
 
-### Manager Dashboard
+### Register
 ![Manager Dashboard](screenshots/manager-dashboard.png)
 
 ### Key Features
 | Feature | Screenshot |
 |---------|------------|
 | Login System | ![Login Page](screenshots/login-page.png) |
-| Room Management | ![Room Management](screenshots/room-management.png) |
-| Payment System | ![Payment System](screenshots/payment-system.png) |
-| Maintenance Requests | ![Maintenance Requests](screenshots/maintenance-request.png) |
+| Student Dashboard | ![Room Management](screenshots/room-management.png) |
+| Manager Dashboard | ![Payment System](screenshots/payment-system.png) |
+| Admin Dashboard | ![Maintenance Requests](screenshots/maintenance-request.png) |
 
 ## ✨ Features
 
@@ -144,8 +144,8 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ## 📞 Contact
 
 For any queries or support, please contact:
-- Email: your.email@example.com
-- Website: [Your Website](https://yourwebsite.com)
+- Email: mohebullah.cse@gmail.com
+- Website: [Your Website](www.facebook.com/zidan.cse)
 
 ## 🙏 Acknowledgments
 
@@ -155,4 +155,4 @@ For any queries or support, please contact:
 - ASP.NET Core team for the robust framework
 
 ---
-Made with ❤️ in Bangladesh 🇧🇩
+Made by Mohebullah & team

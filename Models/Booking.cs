@@ -26,6 +26,9 @@ namespace HostelManageentSystem.Models
         [StringLength(50)]
         public required string Status { get; set; } = "Pending"; // Pending, Confirmed, Cancelled
 
+        [Required]
+        public decimal TotalAmount { get; set; }
+
         public DateTime CreatedAt { get; set; } = DateTime.Now;
         public DateTime? UpdatedAt { get; set; }
 

@@ -1,0 +1,122 @@
+@model HostelManageentSystem.Models.Booking
+@{
+    ViewData["Title"] = "Edit Booking";
+}
+
+<div class="container-fluid">
+    <div class="row">
+        <nav class="col-md-2 d-none d-md-block sidebar">
+            <div class="sidebar-sticky">
+                <ul class="nav flex-column">
+                    <li class="nav-item">
+                        <a class="nav-link" asp-action="Dashboard">
+                            <i class="fas fa-tachometer-alt"></i> Dashboard
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-action="Users">
+                            <i class="fas fa-users"></i> Users
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-action="Hostels">
+                            <i class="fas fa-building"></i> Hostels
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" asp-action="Bookings">
+                            <i class="fas fa-calendar-check"></i> Bookings
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+        <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+            <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                <h1 class="h2">Edit Booking</h1>
+            </div>
+
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="card">
+                        <div class="card-header">
+                            Booking Details
+                        </div>
+                        <div class="card-body">
+                            <form asp-action="EditBooking" method="post">
+                                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                                <input type="hidden" asp-for="Id" />
+
+                                <div class="form-group mb-3">
+                                    <label asp-for="Status" class="control-label"></label>
+                                    <select asp-for="Status" class="form-control">
+                                        <option value="Pending">Pending</option>
+                                        <option value="Confirmed">Confirmed</option>
+                                        <option value="Cancelled">Cancelled</option>
+                                        <option value="Completed">Completed</option>
+                                    </select>
+                                    <span asp-validation-for="Status" class="text-danger"></span>
+                                </div>
+
+                                <div class="form-group mb-3">
+                                    <label asp-for="CheckInDate" class="control-label"></label>
+                                    <input asp-for="CheckInDate" class="form-control" type="date" />
+                                    <span asp-validation-for="CheckInDate" class="text-danger"></span>
+                                </div>
+
+                                <div class="form-group mb-3">
+                                    <label asp-for="CheckOutDate" class="control-label"></label>
+                                    <input asp-for="CheckOutDate" class="form-control" type="date" />
+                                    <span asp-validation-for="CheckOutDate" class="text-danger"></span>
+                                </div>
+
+                                <div class="form-group mb-3">
+                                    <label asp-for="TotalAmount" class="control-label"></label>
+                                    <input asp-for="TotalAmount" class="form-control" />
+                                    <span asp-validation-for="TotalAmount" class="text-danger"></span>
+                                </div>
+
+                                <div class="form-group">
+                                    <button type="submit" class="btn btn-primary">
+                                        <i class="fas fa-save"></i> Save Changes
+                                    </button>
+                                    <a asp-action="Bookings" class="btn btn-secondary">
+                                        <i class="fas fa-arrow-left"></i> Back to List
+                                    </a>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="card-header">
+                            Booking Information
+                        </div>
+                        <div class="card-body">
+                            <dl class="row">
+                                <dt class="col-sm-4">User</dt>
+                                <dd class="col-sm-8">@Model.User?.UserName</dd>
+
+                                <dt class="col-sm-4">Hostel</dt>
+                                <dd class="col-sm-8">@Model.Hostel?.Name</dd>
+
+                                <dt class="col-sm-4">Room</dt>
+                                <dd class="col-sm-8">@Model.Room?.RoomNumber</dd>
+
+                                <dt class="col-sm-4">Created At</dt>
+                                <dd class="col-sm-8">@Model.CreatedAt.ToShortDateString()</dd>
+                            </dl>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+} 

@@ -79,6 +79,32 @@
     .activity-item:last-child {
         border-bottom: none;
     }
+
+    .stat-card {
+        height: 100%;
+    }
+
+    .stat-card .card-body {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    .stat-card .card-title {
+        font-size: 1.1rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .stat-card .card-text {
+        font-size: 2rem;
+        font-weight: bold;
+        margin-bottom: 0;
+    }
+
+    .stat-card .card-subtitle {
+        font-size: 0.9rem;
+        color: rgba(255, 255, 255, 0.8);
+    }
 </style>
 
 <div class="container-fluid">
@@ -121,27 +147,39 @@
             </div>
 
             <div class="row">
-                <div class="col-md-4 mb-4">
-                    <div class="card text-white bg-primary">
+                <div class="col-md-3 mb-4">
+                    <div class="card text-white bg-primary stat-card">
                         <div class="card-body">
                             <h5 class="card-title">Total Users</h5>
-                            <p class="card-text display-4">@Model.TotalUsers</p>
+                            <p class="card-text">@Model.TotalUsers</p>
+                            <small class="card-subtitle">Active users in the system</small>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4 mb-4">
-                    <div class="card text-white bg-success">
+                <div class="col-md-3 mb-4">
+                    <div class="card text-white bg-success stat-card">
                         <div class="card-body">
                             <h5 class="card-title">Active Hostels</h5>
-                            <p class="card-text display-4">@Model.TotalHostels</p>
+                            <p class="card-text">@Model.ActiveHostels</p>
+                            <small class="card-subtitle">Out of @Model.TotalHostels total</small>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4 mb-4">
-                    <div class="card text-white bg-info">
+                <div class="col-md-3 mb-4">
+                    <div class="card text-white bg-info stat-card">
                         <div class="card-body">
                             <h5 class="card-title">Total Bookings</h5>
-                            <p class="card-text display-4">@Model.TotalBookings</p>
+                            <p class="card-text">@Model.TotalBookings</p>
+                            <small class="card-subtitle">@Model.PendingBookings pending</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 mb-4">
+                    <div class="card text-white bg-warning stat-card">
+                        <div class="card-body">
+                            <h5 class="card-title">Pending Actions</h5>
+                            <p class="card-text">@Model.PendingBookings</p>
+                            <small class="card-subtitle">Bookings awaiting approval</small>
                         </div>
                     </div>
                 </div>
@@ -180,13 +218,47 @@
                 <div class="col-md-6">
                     <div class="card">
                         <div class="card-header">
+                            Recent Users
+                        </div>
+                        <div class="card-body">
+                            <ul class="list-group list-group-flush">
+                                @if (Model.RecentUsers != null && Model.RecentUsers.Any())
+                                {
+                                    @foreach (var user in Model.RecentUsers)
+                                    {
+                                        <li class="activity-item">
+                                            <strong>@user.UserName</strong>
+                                            <small class="text-muted">Joined on @user.CreatedAt.ToString("MMM dd, yyyy")</small>
+                                        </li>
+                                    }
+                                }
+                                else
+                                {
+                                    <li class="activity-item">No recent users</li>
+                                }
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row mt-4">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-header">
                             Quick Actions
                         </div>
                         <div class="card-body">
-                            <div class="d-grid gap-2">
-                                <a asp-action="CreateHostel" class="btn btn-primary mb-2">Add New Hostel</a>
-                                <a asp-action="Users" class="btn btn-success mb-2">Manage Users</a>
-                                <a asp-action="Bookings" class="btn btn-info">View Bookings</a>
+                            <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+                                <a asp-action="CreateHostel" class="btn btn-primary me-md-2">
+                                    <i class="fas fa-plus"></i> Add New Hostel
+                                </a>
+                                <a asp-action="Users" class="btn btn-success me-md-2">
+                                    <i class="fas fa-users"></i> Manage Users
+                                </a>
+                                <a asp-action="Bookings" class="btn btn-info">
+                                    <i class="fas fa-calendar-check"></i> View Bookings
+                                </a>
                             </div>
                         </div>
                     </div>

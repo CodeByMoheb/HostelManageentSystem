@@ -1,4 +1,4 @@
-# 🏠 Hostel Management System
+# 🏠 Hostel Management System by team Zero
 
 A modern, web-based Hostel Management System built with ASP.NET Core, featuring a beautiful Bangladeshi-themed UI design. This system helps manage student accommodations, room allocations, payments, and administrative tasks efficiently.
 
